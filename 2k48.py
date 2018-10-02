@@ -10,7 +10,8 @@ screen = pygame.display.set_mode((640,480))
 pygame.display.set_caption("2k48")
 font = pygame.font.SysFont("Courier New", 24)
 
-def criarNumAleatorio():
+
+def criarNumAleatorio(): 
     x1 = randint(0,4);x2 = randint(0,4)
     y1 = randint(0,4);y2 = randint(0,4)
     if(matriz[x1][y1]==0 and matriz[x2][y2]==0):
@@ -22,12 +23,13 @@ def criarNumAleatorio():
                 text = font.render(numero, True, (255,0,0))
                 screen.blit(text, (i*30,j*30))
 
-    else:
-        return criarNumAleatorio()
+
 sair = True
 criarNumAleatorio()
 
+
 while(sair):
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sair = False
@@ -36,6 +38,7 @@ while(sair):
     
     
     if keys[pygame.K_LEFT]:
+        screen.fill((255,255,255))
         criarNumAleatorio()
         for k in range(5):
             for i in range(5):
@@ -47,6 +50,7 @@ while(sair):
                         matriz[i][j]+=matriz[i][j+1] 
                         matriz[i][j+1] = 0
     if keys[pygame.K_RIGHT]:
+        screen.fill((255,255,255))
         criarNumAleatorio()
         for k in range(5):
             for i in range(5):
@@ -59,6 +63,7 @@ while(sair):
                         matriz[i][j] = 0
 
     if keys[pygame.K_DOWN]:
+        screen.fill((255,255,255))
         criarNumAleatorio()
         for k in range(5):
             for i in range(4):
@@ -70,6 +75,7 @@ while(sair):
                         matriz[i+1][j]+=matriz[i][j] 
                         matriz[i][j] = 0
     if keys[pygame.K_UP]:
+        screen.fill((255,255,255))
         criarNumAleatorio()
         for k in range(5):
             for i in range(4):
@@ -79,7 +85,7 @@ while(sair):
                         matriz[i+1][j] = 0
                     elif(matriz[i][j]==matriz[i+1][j]):
                         matriz[i][j]+=matriz[i+1][j] 
-                        matriz[i+1][j] = 0                   
+                        matriz[i+1][j] = 0                  
     pygame.display.update()
 
 pygame.quit()
